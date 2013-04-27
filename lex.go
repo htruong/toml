@@ -169,7 +169,8 @@ func lexStart(l *lexer) stateFn {
 		l.emit(tokenEOF)
 		return nil
   case isDash(r):
-    l.ignore()
+		l.ignore()
+		return lexStart
 	case isNewLine(r):
     if isNewLine(l.peek()) {
         l.emit(tokenEOF)
@@ -229,9 +230,6 @@ Loop:
 		case isSpace(r):
 			l.backup()
 			break Loop
-    case r == keySep || r == keySep2:
-      l.backup()
-      break Loop
     default:
 			l.backup()
 			return l.errorf("bad keyname %#U", r)
