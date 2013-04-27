@@ -9,7 +9,7 @@ var doc = `
 
 [owner] 
 [owner] # Whoa there.
-andrew : "gallant # poopy" # weeeee
+andrew:"gallant # poopy" # weeeee
 predicate = false
 num = -5192
 f = -0.5192
@@ -25,7 +25,9 @@ arrs = [
 	# sweetness
 ] # more comments
 # hehe
-`
+--------------
+
+Since I am an asshole`
 
 
 func TestLex(t *testing.T) {

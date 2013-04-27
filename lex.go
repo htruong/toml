@@ -168,7 +168,13 @@ func lexStart(l *lexer) stateFn {
 	case r == eof:
 		l.emit(tokenEOF)
 		return nil
+  case isDash(r):
+    l.ignore()
 	case isNewLine(r):
+    if isNewLine(l.peek()) {
+        l.emit(tokenEOF)
+        return nil
+      }
 		l.ignore()
 		return lexStart
 	case isSpace(r):
@@ -223,7 +229,10 @@ Loop:
 		case isSpace(r):
 			l.backup()
 			break Loop
-		default:
+    case r == keySep || r == keySep2:
+      l.backup()
+      break Loop
+    default:
 			l.backup()
 			return l.errorf("bad keyname %#U", r)
 		}
@@ -364,7 +373,11 @@ func lexDatetime(l *lexer) stateFn {
 }
 
 func isSpace(r rune) bool {
-	return r == ' ' || r == '\t' || r== '-'
+	return r == ' ' || r == '\t'
+}
+
+func isDash(r rune) bool {
+  return r == '-' 
 }
 
 func isNewLine(r rune) bool {
