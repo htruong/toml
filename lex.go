@@ -364,7 +364,7 @@ func lexDatetime(l *lexer) stateFn {
 }
 
 func isSpace(r rune) bool {
-	return r == ' ' || r == '\t'
+	return r == ' ' || r == '\t' || r== '-'
 }
 
 func isNewLine(r rune) bool {

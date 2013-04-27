@@ -9,7 +9,7 @@ var doc = `
 
 [owner] 
 [owner] # Whoa there.
-andrew = "gallant # poopy" # weeeee
+andrew : "gallant # poopy" # weeeee
 predicate = false
 num = -5192
 f = -0.5192
