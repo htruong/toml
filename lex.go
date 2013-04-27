@@ -31,6 +31,7 @@ const (
 	keyGroupEnd   = ']'
 	keyGroupSep   = '.'
 	keySep        = '='
+	keySep2        = ':'
 	commentStart  = '#'
 )
 
@@ -235,7 +236,7 @@ func lexKeySep(l *lexer) stateFn {
 	ignoreSpaces(l)
 
 	r := l.next()
-	if r == keySep {
+	if r == keySep || r == keySep2 {
 		l.emit(tokenKeySep)
 		return lexValue
 	}
