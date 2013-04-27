@@ -192,7 +192,7 @@ func (d *decode) value(v reflect.Value, node Node) {
 			if v.NumMethod() == 0 {
 				if n.IsInt {
 					v.Set(reflect.ValueOf(n.Int))
-					pd("int %s %p", v, v)
+					//pd("int %s %p", v, v)
 				} else {
 					v.Set(reflect.ValueOf(n.Float))
 				}
